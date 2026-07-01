@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yashi Saxena - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f0c20 0%, #15102a 50%, #06040a 100%);
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --accent-glow: rgba(139, 92, 246, 0.15);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --neon-purple: #a855f7;
+            --neon-blue: #3b82f6;
+            --neon-pink: #ec4899;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Creative Glassmorphism Navigation Bar */
+        nav {
+            background: rgba(15, 12, 32, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 1.2rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        nav .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--neon-blue), var(--neon-purple), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+
+        nav .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        nav .nav-links a:hover, nav .nav-links a.active {
+            color: #fff;
+            background: rgba(168, 85, 247, 0.2);
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+        }
+
+        /* Container Layout */
+        .container {
+            max-width: 1100px;
+            margin: 110px auto 40px auto;
+            padding: 0 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Creative Card Containers */
+        section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            position: relative;
+            overflow: hidden;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple), var(--neon-pink));
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            background: linear-gradient(to right, #fff, var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Dotted Track Rotating Profile Frame */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 3.5rem;
+            flex-wrap: wrap;
+        }
+
+        .photo-container {
+            flex: 1;
+            min-width: 240px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 250px;
+        }
+
+        /* Perfect Dotted Target Spinning Ring */
+        .rotating-track {
+            position: absolute;
+            width: 234px;
+            height: 234px;
+            border-radius: 50%;
+            border: 3px dashed var(--neon-purple);
+            animation: spinTrack 12s linear infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+        }
+
+        @keyframes spinTrack {
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-photo {
+            width: 210px;
+            height: 210px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 0 25px var(--accent-glow);
+            /* Counter-rotate image data internally to keep picture upright */
+            animation: counterSpin 12s linear infinite;
+        }
+
+        @keyframes counterSpin {
+            100% { transform: rotate(-360deg); }
+        }
+
+        .profile-info {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .profile-info h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 0.2rem;
+            background: linear-gradient(to right, #ffffff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .profile-info p.subtitle {
+            font-size: 1.3rem;
+            color: var(--neon-blue);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .profile-info p {
+            color: var(--text-secondary);
+        }
+
+        /* Vibrant Clickable Social Application Icons */
+        .social-icons {
+            margin-top: 1.8rem;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-icons a {
+            font-size: 2.4rem;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-block;
+        }
+
+        .social-icons .fa-linkedin {
+            color: #0077b5;
+        }
+
+        .social-icons .fa-github {
+            color: #ffffff;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.25);
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6));
+        }
+
+        /* High-fidelity Download Button */
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(90deg, var(--neon-purple), var(--neon-pink));
+            color: white;
+            padding: 0.85rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 1.8rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.6);
+            filter: brightness(1.1);
+        }
+
+        /* Refined Lists & Grid Blocks */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skills-category {
+            background: rgba(255,255,255,0.02);
+            padding: 1.8rem;
+            border-radius: 15px;
+            border: 1px solid var(--card-border);
+            transition: transform 0.3s;
+        }
+
+        .skills-category:hover {
+            transform: translateY(-5px);
+            border-color: rgba(168, 85, 247, 0.3);
+        }
+
+        .skills-category h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--neon-blue);
+        }
+
+        .skills-category ul {
+            list-style: none;
+            color: var(--text-secondary);
+        }
+
+        .skills-category li {
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skills-category li::before {
+            content: '✦';
+            color: var(--neon-pink);
+            font-size: 0.8rem;
+        }
+
+        /* Modern Project Grid Blocks */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255,255,255,0.02);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--neon-purple);
+            box-shadow: 0 12px 24px var(--accent-glow);
+        }
+
+        .project-card h3 {
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .project-links {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: auto;
+        }
+
+        .project-links a {
+            color: var(--text-secondary);
+            font-size: 1.8rem;
+            transition: color 0.3s, transform 0.2s;
+        }
+
+        .project-links a:hover {
+            color: var(--neon-pink);
+            transform: scale(1.15);
+        }
+
+        /* Certifications Tab Styling */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .cert-card {
+            background: rgba(15, 12, 32, 0.6);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .cert-card:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+        }
+
+        .cert-img-container {
+            width: 100%;
+            height: 200px;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .cert-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s;
+        }
+
+        .cert-card:hover .cert-img-container img {
+            transform: scale(1.05);
+        }
+
+        .cert-details {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .cert-details h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .cert-details p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-details .authority {
+            font-weight: bold;
+            color: var(--neon-purple);
+            margin-bottom: 0.75rem;
+        }
+
+        /* Contacts View Layout */
+        .contact-info-list {
+            list-style: none;
+        }
+
+        .contact-info-list li {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-info-list i {
+            color: var(--neon-purple);
+            font-size: 1.3rem;
+            width: 24px;
+        }
+
+        .contact-info-list a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-info-list a:hover {
+            color: var(--neon-blue);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            background: #070510;
+            color: var(--text-secondary);
+            margin-top: 5rem;
+            border-top: 1px solid var(--card-border);
+            font-size: 0.95rem;
+        }
+
+        @media(max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .social-icons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Yashi Saxena Portfolio</div>
+        <ul class="nav-links">
+            <li><a onclick="switchPage('main-portfolio')" id="nav-main" class="active">Portfolio</a></li>
+            <li><a onclick="switchPage('certifications-page')" id="nav-certs">Certifications</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        
+        <div id="main-portfolio" class="page active">
+            
+            <section class="profile-header">
+                <div class="photo-container">
+                    <div class="rotating-track">
+                        <img src="yashi 3.jpg" alt="Yashi Saxena" class="profile-photo">
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <h1>Yashi Saxena</h1>
+                    <p class="subtitle">Integrated MBA Tech CE in Technology Management</p>
+                    <p><strong>NMIMS Indore</strong> | CGPA: 8.40</p>
+                    
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/yashi-saxena-297b52322?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/Yashisaxena02" target="_blank" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+                    </div>
+
+                    <a href="YASHI SAXENA CV (updated).pdf" download="Yashi_Saxena_CV.pdf" class="btn-download">
+                        <i class="fas fa-arrow-alt-circle-down"></i> Download CV
+                    </a>
+                </div>
+            </section>
+
+            <section id="about">
+                <h2>About Me</h2>
+                <p>
+                    I am a highly driven dual-degree student pursuing an Integrated MBA Tech CE in Technology Management at NMIMS Indore. Bridging the analytical depth of core Computer Science with the strategic outlook of business infrastructure, I excel at assembling intuitive technical platforms and problem-solving. My unique mix of management acumen, structured programming foundations, and agile execution enables me to design solutions that seamlessly combine user-centric design with technical execution.
+                </p>
+            </section>
+
+            <section id="skills">
+                <h2>Skills &amp; Interests</h2>
+                <div class="skills-grid">
+                    <div class="skills-category">
+                        <h3>Languages &amp; Core CS</h3>
+                        <ul>
+                            <li>Java, Python, C++, SQL</li>
+                            <li>Data Structures &amp; Algorithms</li>
+                            <li>OOP &amp; DBMS</li>
+                        </ul>
+                    </div>
+                    <div class="skills-category">
+                        <h3>Web Tech &amp; Tools</h3>
+                        <ul>
+                            <li>HTML, CSS, JavaScript</li>
+                            <li>Git, GitHub, VS Code</li>
+                            <li>Angular, Node.js</li>
+                        </ul>
+                    </div>
+                    <div class="skills-category">
+                        <h3>Interests &amp; Focus</h3>
+                        <ul>
+                            <li>Full-Stack Development</li>
+                            <li>Financial Markets &amp; Analysis</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects">
+                <h2>Projects</h2>
+                <div class="projects-grid">
+                    
+                    <div class="project-card">
+                        <div>
+                            <h3>Movie Ticket Booking Website</h3>
+                            <p>Developed a full-stack ticketing platform featuring session-based authentication, interactive seat configuration, real-time availability workflows, and clean responsive frontends. Built using Angular, Node.js, and SQL.</p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Yashisaxena02/Movie-Ticket-Booking" target="_blank" title="View Source Code Repository"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div>
+                            <h3>To-Do List Manager</h3>
+                            <p>Designed a modular desktop task manager with deep object-oriented programming implementation. Features structured file handling for persistent configuration storage, clear UI collections, and categorization tracking. Built using Java and Swing.</p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Yashisaxena02/ToDoListManager" target="_blank" title="View Source Code Repository"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div>
+                            <h3>QR Code Generator</h3>
+                            <p>Architected a web-based responsive portal for instant QR asset creation, database registration tracking, and clear administrative data parsing frameworks. Built using Python.</p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Yashisaxena02/QR-Code-Generator" target="_blank" title="View Source Code Repository"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="contact">
+                <h2>Contact Information</h2>
+                <ul class="contact-info-list">
+                    <li><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:YASHI.SAXENA244@nmims.in">YASHI.SAXENA244@nmims.in</a></li>
+                    <li><i class="fas fa-phone"></i> <strong>Phone:</strong> +91 9424865490</li>
+                    <li><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> Indore, India</li>
+                </ul>
+            </section>
+
+        </div>
+
+
+        <div id="certifications-page" class="page">
+            <section>
+                <h2>My Certifications</h2>
+                <p style="margin-bottom: 2rem; color: var(--text-secondary);">A compilation of verified industry achievements and technical specializations.</p>
+                
+                <div class="certifications-grid">
+                    
+                    <div class="cert-card">
+                        <div class="cert-img-container">
+                            <img src="Google Cloud .jpeg" alt="Google Cloud Study Jams Certificate">
+                        </div>
+                        <div class="cert-details">
+                            <h3>Google Cloud Study Jams</h3>
+                            <p class="authority">Issued by: Google Developers Group on Campus</p>
+                            <p>Hands-on practical validation across extensive infrastructure tracks, cloud development architectures, data engineering buckets, and deployment automation toolsets.</p>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-img-container">
+                            <img src="bloomberg finance fundamentals.jpg" alt="Bloomberg Finance Fundamentals Certificate">
+                        </div>
+                        <div class="cert-details">
+                            <h3>Bloomberg Finance Fundamentals</h3>
+                            <p class="authority">Issued by: Bloomberg</p>
+                            <p>Comprehensive overview of investment metrics, modern corporate finance environments, equity valuations, and global macroeconomics integration.</p>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-img-container">
+                            <img src="bloomberg market concepts.jpg" alt="Bloomberg Market Concepts Certificate">
+                        </div>
+                        <div class="cert-details">
+                            <h3>Bloomberg Market Concepts</h3>
+                            <p class="authority">Issued by: Bloomberg for Education</p>
+                            <p>Core exploration of financial analysis data models including equity structures, currency behaviors, bond market systems, and economic indicators.</p>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-img-container">
+                            <img src="bloomberg spreadsheet analysis.jpg" alt="Bloomberg Spreadsheet Analysis Certificate">
+                        </div>
+                        <div class="cert-details">
+                            <h3>Bloomberg Spreadsheet Analysis</h3>
+                            <p class="authority">Issued by: Bloomberg (BQL)</p>
+                            <p>Advanced data parsing, custom metrics scripting via Bloomberg Query Language (BQL), and interactive modeling inside analytical spreadsheets.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Yashi Saxena. Designed with premium dark accents and responsive frames.</p>
+    </footer>
+
+    <script>
+        function switchPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            document.getElementById(pageId).classList.add('active');
+            
+            if(pageId === 'main-portfolio') {
+                document.getElementById('nav-main').classList.add('active');
+            } else {
+                document.getElementById('nav-certs').classList.add('active');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

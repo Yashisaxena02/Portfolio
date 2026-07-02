@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yashi Saxena - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Yashi Saxena-Portfolio</div>
+        <ul class="nav-links">
+            <li><a onclick="switchPage('main-portfolio')" id="nav-main" class="active">Portfolio</a></li>
+            <li><a onclick="switchPage('certifications-page')" id="nav-certs">Certifications</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        
+        <div id="main-portfolio" class="page active">
+            
+            <section class="profile-header">
+                <div class="photo-container">
+                    <div class="rotating-track">
+                        <img src="yashi 3.jpg" alt="Yashi Saxena" class="profile-photo">
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <h1>Yashi Saxena</h1>
+                    <p class="subtitle">Integrated MBA Tech CE in Technology Management</p>
+                    <p><strong>NMIMS Indore</strong> | CGPA: 8.40</p>
+                    
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/yashi-saxena-297b52322?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/Yashisaxena02" target="_blank" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+                    </div>
+
+                    <a href="YASHI SAXENA CV (updated).pdf" download="Yashi_Saxena_CV.pdf" class="btn-download">
+                        <i class="fas fa-arrow-alt-circle-down"></i> Download CV
+                    </a>
+                </div>
+            </section>
+
+            <section id="about">
+                <h2>About Me</h2>
+                <p>
+                    I am a highly driven dual-degree student pursuing an Integrated MBA Tech CE in Technology Management at NMIMS Indore. Bridging the analytical depth of core Computer Science with the strategic outlook of business infrastructure, I excel at assembling intuitive technical platforms and problem-solving. My unique mix of management acumen, structured programming foundations, and agile execution enables me to design solutions that seamlessly combine user-centric design with technical execution.
+                </p>
+            </section>
+
+            <section id="skills">
+                <h2>Skills &amp; Interests</h2>
+                <div class="skills-grid">
+                    <div class="skills-category">
+                        <h3>Languages &amp; Core CS</h3>
+                        <ul>
+                            <li>Java, Python, C++, SQL</li>
+                            <li>Data Structures &amp; Algorithms</li>
+                            <li>OOP &amp; DBMS</li>
+                        </ul>
+                    </div>
+                    <div class="skills-category">
+                        <h3>Web Tech &amp; Tools</h3>
+                        <ul>
+                            <li>HTML, CSS, JavaScript</li>
+                            <li>Git, GitHub, VS Code</li>
+                            <li>Angular, Node.js</li>
+                        </ul>
+                    </div>
+                    <div class="skills-category">
+                        <h3>Interests &amp; Focus</h3>
+                        <ul>
+                            <li>Full-Stack Development</li>
+                            <li>Financial Markets &amp; Analysis</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects">
+                <h2>Projects</h2>
+                <div class="projects-grid">
+                    
+                    <div class="project-card">
+                        <div>
+                            <h3>Movie Ticket Booking Website</h3>
+                            <p>Developed a full-stack ticketing platform featuring session-based authentication, interactive seat configuration, real-time availability workflows, and clean responsive frontends. Built using Angular, Node.js, and SQL.</p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Yashisaxena02/Movie-Ticket-Booking" target="_blank" title="View Source Code Repository"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div>
+                            <h3>To-Do List Manager</h3>
+                            <p>Designed a modular desktop task manager with deep object-oriented programming implementation. Features structured file handling for persistent configuration storage, clear UI collections, and categorization tracking. Built using Java and Swing.</p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Yashisaxena02/ToDoListManager" target="_blank" title="View Source Code Repository"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div>
+                            <h3>QR Code Generator</h3>
+                            <p>Architected a web-based responsive portal for instant QR asset creation, database registration tracking, and clear administrative data parsing frameworks. Built using Python.</p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Yashisaxena02/QR-Code-Generator" target="_blank" title="View Source Code Repository"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="contact">
+                <h2>Contact Information</h2>
+                <ul class="contact-info-list">
+                    <li><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:YASHI.SAXENA244@nmims.in">YASHI.SAXENA244@nmims.in</a></li>
+                    <li><i class="fas fa-phone"></i> <strong>Phone:</strong> +91 9424865490</li>
+                    <li><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> Indore, India</li>
+                </ul>
+            </section>
+
+        </div>
+
+        <div id="certifications-page" class="page">
+            <section>
+                <h2>My Certifications</h2>
+                <p style="margin-bottom: 2rem; color: var(--text-secondary);">A compilation of verified industry achievements and technical specializations.</p>
+                
+                <div class="certifications-grid">
+                    
+                    <div class="cert-card">
+                        <div class="cert-img-container">
+                            <img src="Google Cloud .jpeg" alt="Google Cloud Study Jams Certificate">
+                        </div>
+                        <div class="cert-details">
+                            <h3>Google Cloud Study Jams</h3>
+                            <p class="authority">Issued by: Google Developers Group on Campus</p>
+                            <p>Hands-on practical validation across extensive infrastructure tracks, cloud development architectures, data engineering buckets, and deployment automation toolsets.</p>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-img-container">
+                            <img src="bloomberg finance fundamentals.jpg" alt="Bloomberg Finance Fundamentals Certificate">
+                        </div>
+                        <div class="cert-details">
+                            <h3>Bloomberg Finance Fundamentals</h3>
+                            <p class="authority">Issued by: Bloomberg</p>
+                            <p>Comprehensive overview of investment metrics, modern corporate finance environments, equity valuations, and global macroeconomics integration.</p>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-img-container">
+                            <img src="bloomberg market concepts.jpg" alt="Bloomberg Market Concepts Certificate">
+                        </div>
+                        <div class="cert-details">
+                            <h3>Bloomberg Market Concepts</h3>
+                            <p class="authority">Issued by: Bloomberg for Education</p>
+                            <p>Core exploration of financial analysis data models including equity structures, currency behaviors, bond market systems, and economic indicators.</p>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-img-container">
+                            <img src="bloomberg spreadsheet analysis.jpg" alt="Bloomberg Spreadsheet Analysis Certificate">
+                        </div>
+                        <div class="cert-details">
+                            <h3>Bloomberg Spreadsheet Analysis</h3>
+                            <p class="authority">Issued by: Bloomberg (BQL)</p>
+                            <p>Advanced data parsing, custom metrics scripting via Bloomberg Query Language (BQL), and interactive modeling inside analytical spreadsheets.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Yashi Saxena. Designed with premium dark accents and responsive frames.</p>
+    </footer>
+
+    <script>
+        function switchPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            document.getElementById(pageId).classList.add('active');
+            
+            if(pageId === 'main-portfolio') {
+                document.getElementById('nav-main').classList.add('active');
+            } else {
+                document.getElementById('nav-certs').classList.add('active');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
